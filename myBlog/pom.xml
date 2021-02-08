@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gcnbl</groupId>
+    <artifactId>myBlog</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>common-server</module>
+        <module>enroll-server</module>
+    </modules>
+
+    <packaging>pom</packaging>
+    <!--父工程-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.6.RELEASE</version>
+    </parent>
+
+    <!--SpringCloud包依赖管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.20</version>
+            </dependency>
+            <!--json转换Java对象-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.68</version>
+            </dependency>
+            <!--mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.0.1</version>
+            </dependency>
+            <!--redis-->
+            <!--<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>2.1.6.RELEASE</version>
+            </dependency>-->
+            <!--分页插件-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.2.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.5</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>20140107</version>
+            </dependency>
+
+            <!--oracle数据库驱动-->
+            <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 -->
+            <!--<dependency>
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ojdbc6</artifactId>
+                <version>11.2.0.4</version>
+            </dependency>
+-->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <!--<resources>
+            &lt;!&ndash; 打包时将jsp文件拷贝到META-INF目录下&ndash;&gt;
+            <resource>
+                &lt;!&ndash; 指定resources插件处理哪个目录下的资源文件 &ndash;&gt;
+                <directory>src/main/webapp</directory>
+                &lt;!&ndash;注意此次必须要放在此目录下才能被访问到&ndash;&gt;
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>-->
+    </build>
+</project>

@@ -1,0 +1,10 @@
+server:
+  port: 18080
+
+spring:
+  profiles:
+    active: dev
+
+  devtools:
+    livereload:
+      port: 35730    #热部署端口，默认是35729，手动设置避免在多个应用热部署时端口冲突
