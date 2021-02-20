@@ -12,6 +12,11 @@
         <module>enroll-server</module>
     </modules>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <erupt.version>1.6.4</erupt.version>
+    </properties>
+
     <packaging>pom</packaging>
     <!--父工程-->
     <parent>
@@ -81,6 +86,12 @@
                 <version>11.2.0.4</version>
             </dependency>
 -->
+            <!--用户权限管理-->
+            <dependency>
+                <groupId>xyz.erupt</groupId>
+                <artifactId>erupt-upms</artifactId>
+                <version>${erupt.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -115,4 +126,19 @@
             </resource>
         </resources>-->
     </build>
+
+
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>nexus-aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>

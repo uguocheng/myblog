@@ -8,3 +8,18 @@ spring:
   devtools:
     livereload:
       port: 35730    #热部署端口，默认是35729，手动设置避免在多个应用热部署时端口冲突
+
+
+
+
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root0
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql

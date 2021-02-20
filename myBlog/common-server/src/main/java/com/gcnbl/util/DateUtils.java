@@ -3,6 +3,7 @@ package com.gcnbl.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Deprecated
 public class DateUtils {
     //时间格式
     public  static SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
