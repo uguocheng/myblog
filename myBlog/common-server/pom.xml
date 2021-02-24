@@ -11,7 +11,7 @@
 
     <artifactId>common-server</artifactId>
 
-    <packaging>war</packaging>
+    <!--<packaging>war</packaging>-->
 
     <dependencies>
         <!--启动-->
