@@ -21,21 +21,21 @@ import java.util.Date;
 public class CreateBean extends BaseBean {
     private static final long serialVersionUID = 4728595796964761962L;
 
-    @SkipSerialize
+    //@SkipSerialize
     @ManyToOne(fetch = FetchType.LAZY)
     @CreatedBy
     private BlogUser createUser;
 
-    @SkipSerialize
+    //@SkipSerialize
     @ManyToOne(fetch = FetchType.LAZY)
     @LastModifiedBy
     private BlogUser updateUser;
 
-    @SkipSerialize
+    //@SkipSerialize
     @CreatedDate
     private Date createTime;
 
-    @SkipSerialize
+    //@SkipSerialize
     @LastModifiedDate
     private Date updateTime;
 }

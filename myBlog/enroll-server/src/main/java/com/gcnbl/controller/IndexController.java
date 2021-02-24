@@ -22,7 +22,7 @@ public class IndexController {
 
     @GetMapping("/index")
     public String index(Model model) {
-        model.addAttribute("hello", "gcblog");
+        //model.addAttribute("hello", "gcblog");
         return "register";
     }
 

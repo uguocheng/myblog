@@ -15,9 +15,8 @@ import java.net.URISyntaxException;
 
 @SpringBootApplication
 
-// ↓ xyz.erupt必须有
-@EntityScan("com.gcnbl")    // ↓ 如果包名com.example.demo有变化
-@BlogScan("com.gcnbl")     // → 要修改为变化后的包名
+//@EntityScan("com.gcnbl")    // ↓ 如果包名com.example.demo有变化
+//@BlogScan("com.gcnbl")     // → 要修改为变化后的包名
 public class EnrollServerApplication extends SpringBootServletInitializer {
     public static void main(String[] args) throws URISyntaxException, IOException {
         SpringApplication.run(EnrollServerApplication.class, args);
