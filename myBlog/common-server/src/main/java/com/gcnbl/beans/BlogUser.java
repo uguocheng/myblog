@@ -20,6 +20,7 @@ public class BlogUser extends CreateBean {
     public BlogUser(Long id) {
         this.setId(id);
     }
+
     private String name;
 
     private String password;

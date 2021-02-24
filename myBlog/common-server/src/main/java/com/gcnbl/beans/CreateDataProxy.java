@@ -2,6 +2,7 @@ package com.gcnbl.beans;
 
 import com.gcnbl.annotation.DataProxy;
 import com.gcnbl.service.BlogUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -10,8 +11,12 @@ import java.util.Date;
 @Service
 public class CreateDataProxy implements DataProxy<CreateBean> {
 
-    @Resource
-    private BlogUserService userService;
+    private final BlogUserService userService;
+
+    @Autowired
+    public CreateDataProxy(BlogUserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public void beforeAdd(CreateBean createBean) {

@@ -89,8 +89,9 @@
                         <input type="text" name="kw" id="txt"><input type="submit" value="搜索">
                     </form>
                 </td>
-                <td><input type="button" value="注册"></td>
-                <td><input type="button" value="登录"></td>
+                <!--<td><a href="/index/index">注册</a></td>-->
+                <td><input type="button" value="注册" id="register" onclick="f()"></td>
+                <td><input type="button" value="登录" id="login" onclick="f2()"></td>
             </tr>
         </table>
     </div>
@@ -103,33 +104,14 @@
 <div>
 
 </div>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
-<p>111</p>
+
+
 <a href="#aId">回到顶部</a>
 </body>
 <script>
+    function f() {
+        location.href="/index/index";
+    }
     var c=null;
     $("#txt").focus(function () {
         c=this.style.borderColor;

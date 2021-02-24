@@ -3,10 +3,12 @@ package com.gcnbl.service;
 //import com.gcnbl.config.BlogProp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+@Service
 public class BlogSessionService {
     //@Autowired
     //private BlogProp blogProp;

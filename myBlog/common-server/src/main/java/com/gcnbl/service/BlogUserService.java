@@ -3,10 +3,12 @@ package com.gcnbl.service;
 import com.gcnbl.constant.BlogReqHeaderConst;
 import com.gcnbl.constant.SessionKey;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+@Service
 public class BlogUserService {
     @Resource
     private BlogSessionService sessionService;

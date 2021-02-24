@@ -1,6 +1,6 @@
 package com.gcnbl.annotation;
 
-import org.apache.poi.ss.usermodel.Workbook;
+//import org.apache.poi.ss.usermodel.Workbook;
 
 import java.util.Collection;
 import java.util.Map;
@@ -49,12 +49,12 @@ public interface DataProxy<@Comment("Erupt类对象") MODEL> {
     default void editBehavior(MODEL model) {
     }
 
-    @Comment("excel导出")
+   /* @Comment("excel导出")
     default void excelExport(@Comment("POI文档对象") Workbook wb) {
     }
 
     @Comment("excel导入")
     default void excelImport(MODEL model) {
-    }
+    }*/
 
 }
