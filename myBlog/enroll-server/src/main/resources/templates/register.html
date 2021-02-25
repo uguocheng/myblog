@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,24 +8,20 @@
 </head>
 <body>
 
-
 <div align="center">
-
     <!--
     表单绑定提交事件
     onsubmit=绑定一个提交检测的函数，true,false
     将这个结果返回给表单，使用onsubmit接收
     -->
     <form method="post" onsubmit="return checkInput()" class="layui-form" action="/blog/user/register">
-        用户名：<input type="text" id="username" name="username" placeholder="请输入用户名" lay-verify="required">
-        手机号：<input type="text" name="telphone" placeholder="请输入手机号" lay-verify="required">
+        <li>用户名：<input type="text" id="username" name="username" placeholder="请输入用户名" lay-verify="required"></li>
+        <li>手机号：<input type="text" name="telphone" placeholder="请输入手机号" lay-verify="required"></li>
+        <li> 密码：<input type="password" id="pwd" lay-verify="required" placeholder="请输入密码">
+            <!--加密后的密码-->
+            <input type="hidden" id="password_md5" name="password" placeholder="请确认密码"></li>
+        <li>确认密码:<input type="password" id="pwd2" onkeyup="verify()"><span id="tishi"></span></li>
 
-        密码：<input type="password" id="pwd" lay-verify="required" placeholder="请输入密码">
-        <!--加密后的密码-->
-        <input type="hidden" id="password_md5" name="password" placeholder="请确认密码">
-
-        确认密码:<input type="password" id="pwd2">
-        <input type="hidden" id="password2_md5" name="password2">
 
         <div class="row">
             <div class="checkbox i-checks pull-left" style="margin-left:-5px;">
@@ -35,7 +31,7 @@
                                                                     class="text-info">忘记密码</a></div>
         </div>
 
-        <input value="登录" id="login-btn" lay-submit lay-filter="login" type="submit">
+        <input value="注册" id="submit" lay-submit lay-filter="login" type="submit"><input type="reset" value="重新输入">
 
     </form>
 </div>
@@ -44,15 +40,28 @@
 
 
 <script>
+    var password_input = document.getElementById('pwd');
+    var password2_input = document.getElementById('pwd2');
+
+    //前端验证密码
+    function verify() {
+        if (password_input.value === password2_input.value) {
+            document.getElementById('tishi').innerHTML = '<font color="green">密码一致</font>';
+            document.getElementById('submit').disabled = false;
+        }
+        else {
+            document.getElementById('tishi').innerHTML = '<font color="red">密码不一致</font>';
+            document.getElementById('submit').disabled = true;
+        }
+    }
+
+    //提交前将密码加密
     function checkInput() {
-        var password_input = document.getElementById('pwd');
+
         var password_md5 = document.getElementById('password_md5');
         password_md5.value = md5(password_input.value);
 
-        var password2_input = document.getElementById('pwd2');
-        var password2_md5 = document.getElementById('password2_md5');
-        password2_md5.value = md5(password2_input.value);
-        //可以检验判断表单内容，true就是通过提交，false阻止提交
+        //可以检验判断表单内容，true就是通过提交，false阻止提交；检验密码是否已加密
         return true;
     }
 </script>

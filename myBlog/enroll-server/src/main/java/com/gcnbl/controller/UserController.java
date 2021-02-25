@@ -3,9 +3,12 @@ package com.gcnbl.controller;
 import com.gcnbl.service.ArticleService;
 import com.gcnbl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/blog")
@@ -20,41 +23,45 @@ public class UserController {
     public String register() {
         return "register";
     }
+
     @RequestMapping("/login")
     public String login() {
         return "login";
     }
 
     @RequestMapping(value = "/user/register", method = RequestMethod.POST)
-    public String userRegister(@RequestParam("username") String username,
+    public String register(@RequestParam("username") String username,
                            @RequestParam("password") String password,
-                           @RequestParam("password2") String password2,
-                           @RequestParam("telphone") int telphone,Model model) {
+                           @RequestParam("telphone") int telphone) {
         System.out.println(password);
-        System.out.println(password2);
-        int count = userService.addBlogUser(username, password, password2, telphone);
 
-        if (count == 1) { //注册成功
-            System.out.println(666);
-            return "userCenter";
-        }
+        userService.addBlogUser(username, password, telphone);
 
-        //密码不一致或系统问题
-        model.addAttribute("twoPassword", true);
-        System.out.println(777);
-        return "register";
+        System.out.println(666);
+        //注册成功直接跳转登录
+        return "login";
 
     }
+
 
     @PostMapping("/user/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
-                        Model model) {
-        //如果没有记录，则进行注册
-        if (false){
-            model.addAttribute("noRegister", true);
-            return "register";
+                        Model model, HttpServletRequest httpServletRequest) {
+
+        System.out.println(password);
+        Long userId = userService.login(username, password);
+
+        if (userId==null){
+            //如果没有记录，重新输入
+            model.addAttribute("worryPwd", true);
+            return "login";
+
         }
-        return null;
+        else {
+            httpServletRequest.getSession().setAttribute("userId", userId);
+            return "userCenter";
+        }
+
     }
 }

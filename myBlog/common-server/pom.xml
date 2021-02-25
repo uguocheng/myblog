@@ -38,12 +38,6 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
-        <!--thymeleaf配置-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
         <!--用户权限管理-->
         <!--<dependency>
             <groupId>xyz.erupt</groupId>
