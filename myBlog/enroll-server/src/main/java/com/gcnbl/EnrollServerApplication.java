@@ -1,16 +1,14 @@
 package com.gcnbl;
 
-//import feign.Logger;
-import com.gcnbl.annotation.BlogScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
+
 import java.awt.*;
 import java.io.IOException;
-import java.net.URI;
+
 import java.net.URISyntaxException;
 
 @SpringBootApplication
@@ -21,8 +19,8 @@ public class EnrollServerApplication extends SpringBootServletInitializer {
     public static void main(String[] args) throws URISyntaxException, IOException {
         SpringApplication.run(EnrollServerApplication.class, args);
 
-        System.setProperty("java.awt.headless", "false");
-        Desktop.getDesktop().browse(new URI("http://localhost:18080"));
+        //System.setProperty("java.awt.headless", "false");
+        //Desktop.getDesktop().browse(new URI("http://localhost:18080"));
     }
 
     //在启动类上添加bean对象注入给spring容器

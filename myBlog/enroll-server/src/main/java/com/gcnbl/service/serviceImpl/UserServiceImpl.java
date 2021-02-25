@@ -27,8 +27,9 @@ public class UserServiceImpl implements UserService {
     public Long login(String username, String password) {
 
         BlogUser blogUser = userDao.findBlogUserByNameAndPassword(username, password);
-        Long userId = blogUser.getId();
-
-        return userId;
+        if (blogUser != null) {
+            return blogUser.getId();
+        }
+        return null;
     }
 }

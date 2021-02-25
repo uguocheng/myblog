@@ -33,11 +33,6 @@
             &lt;!&ndash;<version>2.0.1</version>&ndash;&gt;
         </dependency>-->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-        </dependency>
-
         <!--用户权限管理-->
         <!--<dependency>
             <groupId>xyz.erupt</groupId>
@@ -76,4 +71,25 @@
         </dependency>
 
     </dependencies>
+
+    <!-- 被依赖的模块需要加上，这样依赖他的模块打包才能找到他 -->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**.*</include>
+                    <include>**/*.*</include><!-- i18n能读取到 -->
+                    <include>**/*/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
 </project>
