@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!--<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <!--MD5工具类-->
     <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.16.0/js/md5.min.js"></script>
@@ -16,61 +17,71 @@
     将这个结果返回给表单，使用onsubmit接收
     -->
     <form method="post" onsubmit="return checkInput()" class="layui-form" action="/blog/user/register">
-        <li>用户名：<input type="text" id="username" name="username" placeholder="请输入用户名" lay-verify="required">
-        <span id="s_username"></span></li>
-        <li>手机号：<input type="text" name="telphone" placeholder="请输入手机号" lay-verify="required"></li>
-        <li> 密码：<input type="password" id="pwd" lay-verify="required" placeholder="请输入密码">
-            <!--加密后的密码-->
-            <input type="hidden" id="password_md5" name="password" placeholder="请确认密码"></li>
-        <li>确认密码:<input type="password" id="pwd2" onkeyup="verify()"><span id="tishi"></span></li>
-
-
+        <li>用户名：<input type="text" id="username" name="username" placeholder="请输入用户名">
+            <span id="s_username"></span></li>
+        <li>手机号：<input type="text" id="telphone" name="telphone" placeholder="请输入手机号" onkeyup="verifyPhone()">
+            <span id="hint_phone"></span></li>
+        <li> 密码：<input type="password" id="pwd" placeholder="请输入密码" onkeyup="verifyPwd()">
+            <span id="hint_pwd"></span>
+            <input type="hidden" id="password_md5" name="password"></li>
+        <li>确认密码:<input type="password" id="pwd2" placeholder="请确认密码" onkeyup="verify()"><span id="tishi"></span></li>
         <div class="row">
             <div class="checkbox i-checks pull-left" style="margin-left:-5px;">
                 <label><input type="checkbox" value="">记住用户名和密码</label>
             </div>
-            <div class="pull-right" style="margin:10px 15px 0 0"><a href="javascript:void(0)" id="xxxx"
-                                                                    class="text-info">忘记密码</a></div>
+            <div style="margin:10px 15px 0 0"><a href="javascript:void(0)" id="xxxx">忘记密码</a></div>
         </div>
-
-        <input value="注册" id="submit" lay-submit lay-filter="login" type="submit"><input type="reset" value="重新输入">
-
+        <input value="注册" id="submit" type="submit"><input type="reset" value="重新输入">
     </form>
 </div>
-
 </body>
-
 
 <script>
     $(function () {
-
         //给用户名输入框绑定 失去焦点事件blur
         $("#username").blur(function () {
             //获取文本框的值
-            var username = $(this).val();
+            let username = $(this).val();
             //发送ajax请求
-            $.get("registerName",{username:username},
-            function (data) {
-                //获取元素
-                var s_username=$("#s_username");
-
-                var map=data.model;
-
-                if (map.userExist){
-                    s_username.css("color","red");
-                    s_username.html(map.msg);
-                } else {
-                    s_username.css("color", "green");
-                    s_username.html(map.msg);
-                }
-            },"json");
+            $.get("registerName", {username: username},
+                function (data) {
+                    //获取元素
+                    let s_username = $("#s_username");
+                    let map = data.model;
+                    if (map.userExist) {
+                        s_username.css("color", "red");
+                        s_username.html(map.msg);
+                    } else {
+                        s_username.css("color", "green");
+                        s_username.html(map.msg);
+                    }
+                }, "json");
         });
     });
 
+    function verifyPhone() {
+        let reg = /^1[3456789]\d{9}$/;
+        let phone = document.getElementById('telphone').value;
 
 
-    var password_input = document.getElementById('pwd');
-    var password2_input = document.getElementById('pwd2');
+        if (reg.test(phone)) {
+            document.getElementById('hint_phone').innerHTML = null;
+        } else {
+            document.getElementById('hint_phone').innerHTML = '<font color="red">请输入正确的手机号</font>';
+        }
+    }
+
+    let password_input = document.getElementById('pwd');
+    let password2_input = document.getElementById('pwd2');
+
+    function verifyPwd() {
+        let reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z\\W]{3,18}$/;
+        if (reg.test(password_input.value)) {
+            document.getElementById('hint_pwd').innerHTML = null;
+        } else {
+            document.getElementById('hint_pwd').innerHTML = '<font color="red">密码必须包含数字和字母，且为3-18位</font>';
+        }
+    }
 
     //前端验证密码
     function verify() {
@@ -86,10 +97,8 @@
 
     //提交前将密码加密
     function checkInput() {
-
-        var password_md5 = document.getElementById('password_md5');
+        let password_md5 = document.getElementById('password_md5');
         password_md5.value = md5(password_input.value);
-
         //可以检验判断表单内容，true就是通过提交，false阻止提交；检验密码是否已加密
         return true;
     }

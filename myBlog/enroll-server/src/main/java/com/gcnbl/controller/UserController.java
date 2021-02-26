@@ -35,13 +35,13 @@ public class UserController {
     @RequestMapping(value = "/user/register", method = RequestMethod.POST)
     public String register(@RequestParam("username") String username,
                            @RequestParam("password") String password,
-                           @RequestParam("telphone") int telphone) {
+                           @RequestParam("telphone") Long telphone) {
         System.out.println(password);
 
         userService.addBlogUser(username, password, telphone);
 
         System.out.println(666);
-        //注册成功直接跳转登录
+        //注册成功跳转登录页面
         return "login";
 
     }

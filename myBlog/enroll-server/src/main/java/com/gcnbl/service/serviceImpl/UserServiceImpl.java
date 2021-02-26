@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void addBlogUser(String username, String password, int telphone) {
+    public void addBlogUser(String username, String password, Long telphone) {
 
 
 
