@@ -95,36 +95,4 @@
         </dependencies>
     </dependencyManagement>
 
-
-
-    <!--<build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                &lt;!&ndash;<version>2.1.8.RELEASE</version>&ndash;&gt;
-                <configuration>
-                    <fork>true</fork>&lt;!&ndash;如果没有该配置，devtools不会生效 &ndash;&gt;&ndash;&gt;
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>-->
-
 </project>

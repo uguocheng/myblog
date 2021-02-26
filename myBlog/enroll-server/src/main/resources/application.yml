@@ -8,6 +8,9 @@ spring:
   devtools:
     livereload:
       port: 35730    #热部署端口，默认是35729，手动设置避免在多个应用热部署时端口冲突
+    restart:
+      enabled: true
+      additional-exclude: WEB-INF/**
 
   datasource:
     url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
@@ -22,4 +25,11 @@ spring:
       ddl-auto: update
 
   thymeleaf:
-    cache: false
+    #配置模板引擎
+    prefix: classpath:/templates/  #默认值
+    suffix: .html   #默认值
+    cache: false  #默认true
+    #配置静态资源文件路径
+  resources:
+    static-locations: ["classpath:/META-INF/resources/","classpath:/resources/","classpath:/static/","classpath:/public/"]  #默认值
+

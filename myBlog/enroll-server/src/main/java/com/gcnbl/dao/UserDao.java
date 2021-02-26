@@ -10,4 +10,6 @@ public interface UserDao extends JpaRepository<BlogUser,Long> /*, JpaSpecificati
     //@Query(value = "from BlogUser where name=?1 and password=?2")
 
     BlogUser findBlogUserByNameAndPassword(String name,String password);
+
+    BlogUser findBlogUserByName(String name);
 }

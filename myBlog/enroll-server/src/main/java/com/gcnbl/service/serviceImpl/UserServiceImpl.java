@@ -13,7 +13,20 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
+    public int validateName(String username) {
+        BlogUser blogUser = userDao.findBlogUserByName(username);
+        if (blogUser != null) {
+            return 1;
+        }
+
+        return 0;
+    }
+
+
+    @Override
     public void addBlogUser(String username, String password, int telphone) {
+
+
 
         BlogUser blogUser = new BlogUser();
         blogUser.setName(username);
