@@ -43,20 +43,25 @@
 
 <script>
     $(function () {
-        $("#username").blur(function () {
-            var username = $(this).val();
 
+        //给用户名输入框绑定 失去焦点事件blur
+        $("#username").blur(function () {
+            //获取文本框的值
+            var username = $(this).val();
+            //发送ajax请求
             $.get("registerName",{username:username},
             function (data) {
-
+                //获取元素
                 var s_username=$("#s_username");
 
-                if (data.userExist){
+                var map=data.model;
+
+                if (map.userExist){
                     s_username.css("color","red");
-                    s_username.html(data.msg);
+                    s_username.html(map.msg);
                 } else {
                     s_username.css("color", "green");
-                    s_username.html(data.msg);
+                    s_username.html(map.msg);
                 }
             },"json");
         });
