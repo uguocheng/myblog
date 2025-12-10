@@ -1,7 +1,7 @@
 package com.gcnbl.service.serviceImpl;
 
 
-import com.gcnbl.beans.BlogUser;
+import com.gcnbl.bean.BlogUser;
 import com.gcnbl.dao.UserDao;
 import com.gcnbl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

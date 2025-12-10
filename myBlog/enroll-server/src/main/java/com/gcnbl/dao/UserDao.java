@@ -1,9 +1,7 @@
 package com.gcnbl.dao;
 
-import com.gcnbl.beans.BlogUser;
+import com.gcnbl.bean.BlogUser;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Query;
 
 public interface UserDao extends JpaRepository<BlogUser,Long> /*, JpaSpecificationExecutor<BlogUser>*/ {
 

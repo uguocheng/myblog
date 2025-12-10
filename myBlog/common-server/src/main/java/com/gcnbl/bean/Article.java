@@ -1,4 +1,4 @@
-package com.gcnbl.beans;
+package com.gcnbl.bean;
 
 
 import lombok.Getter;

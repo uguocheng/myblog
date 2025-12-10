@@ -1,6 +1,6 @@
 package com.gcnbl.service.serviceImpl;
 
-import com.gcnbl.beans.Article;
+import com.gcnbl.bean.Article;
 import com.gcnbl.dao.ArticleDao;
 import com.gcnbl.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;

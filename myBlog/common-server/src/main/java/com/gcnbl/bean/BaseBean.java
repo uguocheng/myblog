@@ -1,8 +1,7 @@
-package com.gcnbl.beans;
+package com.gcnbl.bean;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;

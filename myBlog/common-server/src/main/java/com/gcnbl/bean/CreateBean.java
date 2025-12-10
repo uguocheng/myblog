@@ -1,7 +1,6 @@
-package com.gcnbl.beans;
+package com.gcnbl.bean;
 
 import com.gcnbl.annotation.PreDataProxy;
-import com.gcnbl.annotation.SkipSerialize;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
