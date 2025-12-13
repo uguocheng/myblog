@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件列表</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>id</th>
+        <th>fileName</th>
+        <th>filePath</th>
+        <th>操作</th>
+    </tr>
+
+    <tr th:each="file,fileState:${fileList}">
+        <td th:text="${file.id}"></td>
+        <td th:text="${file.fileName}"></td>
+        <td th:text="${file.filePath}"></td>
+        <td><a th:href="@{/file/play(filePath=${file.filePath})}">播放</a></td>
+    </tr>
+</table>
+</body>
+</html>

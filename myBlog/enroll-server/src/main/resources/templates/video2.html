@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>播放本地的视频文件</title>
+
+</head>
+
+<body>
+
+<td align="center" th:width="455">
+    <!--value="<%=bathPath%>tools/<%=bathPath%><%=()%>"-->
+    <parm name="movie" th:src="${filePath}"></parm>
+    <embed th:src="${filePath}" th:width="98" th:height="90">
+</td>
+<hr>
+
+<h3><center>视频播放测试</center></h3>
+
+<hr color="#666666">
+
+<input type="file" id="file" onchange="onInputFileChange()" th:value="${filePath}">
+
+<br/>
+
+<video id="video_id"  width="520" height="360" controls autoplay loop th:src="${filePath}">你的浏览器不能支持HTML5视频</video>
+
+<script>
+
+    function onInputFileChange() {
+
+        var file = document.getElementById('file').files[0];
+
+        var url = URL.createObjectURL(file);
+
+        // var url = document.getElementById('file').value;
+
+        console.log(url);
+
+        document.getElementById("video_id").src = url;
+    }
+    
+</script>
+
+</body>
+
+</html>
